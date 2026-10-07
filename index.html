@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Engli — Programming, in plain English.</title>
+  <meta name="description" content="Engli is an English-like, Turing-complete programming language implemented in Python.">
+  <meta name="theme-color" content="#09090b">
+
+  <style>
+    :root {
+      --bg: #09090b;
+      --bg-soft: #111113;
+      --panel: #141416;
+      --panel-2: #18181b;
+      --border: #27272a;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --subtle: #71717a;
+      --accent: #ffffff;
+      --green: #86efac;
+      --blue: #93c5fd;
+      --purple: #c4b5fd;
+      --orange: #fdba74;
+      --pink: #f9a8d4;
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background:
+        radial-gradient(circle at 50% -10%, #27272a 0, transparent 38%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* NAV */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(9, 9, 11, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 20px;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      color: #09090b;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .github {
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--text) !important;
+      background: rgba(255,255,255,0.03);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 820px;
+      padding: 170px 0 100px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-content {
+      width: 100%;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      border-radius: 999px;
+      padding: 7px 13px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    h1 {
+      font-size: clamp(58px, 9vw, 108px);
+      line-height: 0.92;
+      letter-spacing: -0.075em;
+      font-weight: 850;
+      margin-bottom: 28px;
+    }
+
+    .gradient {
+      background: linear-gradient(
+        110deg,
+        #fff 10%,
+        #a1a1aa 45%,
+        #fff 85%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: auto;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 21px);
+    }
+
+    .hero-actions {
+      margin-top: 38px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 19px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: white;
+      color: black;
+      border-color: white;
+    }
+
+    .button.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255,255,255,0.13);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .button.secondary:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* CODE WINDOW */
+
+    .code-window {
+      max-width: 850px;
+      margin: 70px auto 0;
+      text-align: left;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      overflow: hidden;
+      background: #0d0d0f;
+      box-shadow:
+        0 35px 100px rgba(0,0,0,0.45),
+        0 0 80px rgba(255,255,255,0.025);
+    }
+
+    .window-bar {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 15px;
+      border-bottom: 1px solid var(--border);
+      background: #111113;
+    }
+
+    .window-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #3f3f46;
+    }
+
+    .filename {
+      margin-left: 10px;
+      color: var(--subtle);
+      font-size: 12px;
+      font-family: monospace;
+    }
+
+    pre {
+      overflow-x: auto;
+      padding: 25px;
+      font: 14px/1.8 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    .kw { color: var(--purple); }
+    .str { color: var(--green); }
+    .num { color: var(--orange); }
+    .fn { color: var(--blue); }
+    .comment { color: #52525b; }
+
+    /* SECTIONS */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-label {
+      color: var(--subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: clamp(35px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      margin-bottom: 18px;
+    }
+
+    .section-description {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* FEATURES */
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 55px;
+    }
+
+    .feature {
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, #141416, #0e0e10);
+      border-radius: var(--radius);
+      padding: 27px;
+      min-height: 205px;
+      transition: 0.25s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      border-color: #3f3f46;
+      background: #171719;
+    }
+
+    .feature-icon {
+      font-size: 23px;
+      margin-bottom: 24px;
+    }
+
+    .feature h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* LANGUAGE */
+
+    .language {
+      background: #0c0c0e;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .syntax-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #101012;
+    }
+
+    .syntax-title {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .syntax-card pre {
+      padding: 23px;
+    }
+
+    /* DEMO */
+
+    .demo-box {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #0e0e10;
+    }
+
+    .demo-pane {
+      min-width: 0;
+    }
+
+    .demo-pane + .demo-pane {
+      border-left: 1px solid var(--border);
+    }
+
+    .pane-head {
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--subtle);
+      font: 12px monospace;
+    }
+
+    .demo-pane pre {
+      min-height: 260px;
+    }
+
+    .output {
+      color: var(--green);
+    }
+
+    /* ARCHITECTURE */
+
+    .architecture {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+
+    .arch {
+      padding: 18px 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 11px;
+      color: var(--muted);
+      font-size: 12px;
+      position: relative;
+    }
+
+    .arch strong {
+      display: block;
+      color: white;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    /* CLI */
+
+    .cli {
+      background: #0c0c0e;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .terminal {
+      margin-top: 45px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #08080a;
+    }
+
+    .terminal-head {
+      padding: 12px 17px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--subtle);
+    }
+
+    .terminal pre {
+      min-height: 260px;
+      color: #d4d4d8;
+    }
+
+    .prompt {
+      color: var(--green);
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      padding: 150px 0;
+    }
+
+    .cta h2 {
+      font-size: clamp(45px, 7vw, 78px);
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      margin-bottom: 22px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 570px;
+      margin: auto;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: var(--subtle);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 800px) {
+      .nav-links a:not(.github) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 720px;
+        padding-top: 130px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .demo-box {
+        grid-template-columns: 1fr;
+      }
+
+      .demo-pane + .demo-pane {
+        border-left: 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .architecture {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        width: min(var(--max), calc(100% - 28px));
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      pre {
+        font-size: 12px;
+      }
+
+      h1 {
+        font-size: 61px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">E</span>
+        Engli
+      </a>
+
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#language">Language</a>
+        <a href="#architecture">Architecture</a>
+        <a
+          class="github"
+          href="https://github.com/live-by-unix/engli"
+          target="_blank"
+          rel="noopener"
+        >GitHub ↗</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero">
+      <div class="container hero-content">
+
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Engli 1.0.0 · Python 3.12+
+        </div>
+
+        <h1>
+          Programming,<br>
+          <span class="gradient">in plain English.</span>
+        </h1>
+
+        <p>
+          Engli is a serious, general-purpose, Turing-complete
+          programming language designed to read like English —
+          without sacrificing real programming power.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="button primary"
+            href="https://github.com/live-by-unix/engli"
+            target="_blank"
+            rel="noopener"
+          >
+            View on GitHub
+          </a>
+
+          <a class="button secondary" href="#demo">
+            See the syntax ↓
+          </a>
+        </div>
+
+        <div class="code-window">
+          <div class="window-bar">
+            <span class="window-dot"></span>
+            <span class="window-dot"></span>
+            <span class="window-dot"></span>
+            <span class="filename">hello.engli</span>
+          </div>
+
+          <pre><code><span class="kw">Set</span> name <span class="kw">to</span> <span class="str">"World"</span>.
+<span class="kw">Say</span> <span class="str">"Hello, {name}."</span>.</code></pre>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FEATURES -->
+    <section id="features">
+      <div class="container">
+
+        <div class="section-label">The language</div>
+
+        <h2 class="section-title">
+          English-like.<br>
+          Actually powerful.
+        </h2>
+
+        <p class="section-description">
+          Engli keeps the syntax readable while providing the building
+          blocks you'd expect from a real programming language.
+        </p>
+
+        <div class="feature-grid">
+
+          <article class="feature">
+            <div class="feature-icon">◈</div>
+            <h3>English-like syntax</h3>
+            <p>
+              Write code that reads naturally. Commands such as
+              <code>Set</code>, <code>Say</code>, <code>If</code>,
+              and <code>While</code> are immediately understandable.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">∞</div>
+            <h3>Turing-complete</h3>
+            <p>
+              This isn't a toy syntax. Engli supports the control flow,
+              data structures, functions, and runtime features needed
+              for general-purpose programming.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">λ</div>
+            <h3>Functions</h3>
+            <p>
+              Define reusable functions with readable declarations,
+              arguments, return values, and normal program structure.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">▦</div>
+            <h3>Rich data structures</h3>
+            <p>
+              Work with lists, maps, objects, custom types,
+              and enumerations directly in the language.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">↗</div>
+            <h3>Real-world I/O</h3>
+            <p>
+              Engli can work with files, terminal commands, HTTP,
+              JSON, and imported modules.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>Concurrency</h3>
+            <p>
+              Start tasks and wait for them to finish using
+              readable concurrency primitives.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- LANGUAGE -->
+    <section class="language" id="language">
+      <div class="container split">
+
+        <div>
+          <div class="section-label">Readable by design</div>
+
+          <h2 class="section-title">
+            Code that explains itself.
+          </h2>
+
+          <p class="section-description">
+            Engli uses a deterministic grammar while keeping its
+            programs approachable. You shouldn't need to decode
+            punctuation before understanding what the program does.
+          </p>
+        </div>
+
+        <div class="syntax-card">
+          <div class="syntax-title">example.engli</div>
+
+          <pre><code><span class="kw">Set</span> name <span class="kw">to</span> <span class="str">"AB"</span>.
+<span class="kw">Set</span> age <span class="kw">to</span> <span class="num">20</span>.
+
+<span class="kw">If</span> age is greater than or equal to <span class="num">18</span>:
+
+    <span class="kw">Say</span> <span class="str">"Hello, {name}."</span>.</code></pre>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- LIVE DEMO -->
+    <section id="demo">
+      <div class="container">
+
+        <div class="section-label">A tiny taste</div>
+
+        <h2 class="section-title">
+          It looks like English.
+        </h2>
+
+        <p class="section-description">
+          But underneath, Engli has a lexer, parser, semantic analyzer,
+          interpreter, runtime, and standard library.
+        </p>
+
+        <div class="demo-box">
+
+          <div class="demo-pane">
+            <div class="pane-head">program.engli</div>
+
+            <pre><code><span class="kw">Set</span> x <span class="kw">to</span> <span class="num">10</span>.
+<span class="kw">Add</span> <span class="num">5</span> <span class="kw">to</span> x.
+<span class="kw">Say</span> x.</code></pre>
+          </div>
+
+          <div class="demo-pane">
+            <div class="pane-head">output</div>
+
+            <pre><code class="output">15</code></pre>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CAPABILITIES -->
+    <section>
+      <div class="container">
+
+        <div class="section-label">Beyond hello world</div>
+
+        <h2 class="section-title">
+          Built for actual programs.
+        </h2>
+
+        <p class="section-description">
+          Engli's syntax may be friendly, but its feature set goes
+          far beyond basic examples.
+        </p>
+
+        <div class="feature-grid">
+
+          <article class="feature">
+            <div class="feature-icon">▤</div>
+            <h3>Imports & modules</h3>
+            <p>
+              Split programs into multiple files and import functionality
+              where you need it.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">{ }</div>
+            <h3>JSON</h3>
+            <p>
+              Parse HTTP responses and other JSON data directly from
+              Engli programs.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">⌁</div>
+            <h3>HTTP</h3>
+            <p>
+              Send HTTP requests and work with their responses from
+              within the language.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">▣</div>
+            <h3>Filesystem</h3>
+            <p>
+              Read files and interact with data stored on disk.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">$_</div>
+            <h3>Terminal commands</h3>
+            <p>
+              Execute terminal commands and store their results
+              in Engli variables.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">!</div>
+            <h3>Error handling</h3>
+            <p>
+              Use structured try/error handling for programs that
+              need to deal with failures.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ARCHITECTURE -->
+    <section class="cli" id="architecture">
+      <div class="container">
+
+        <div class="section-label">Under the hood</div>
+
+        <h2 class="section-title">
+          A real interpreter.
+        </h2>
+
+        <p class="section-description">
+          Engli follows a traditional language implementation pipeline,
+          from source code all the way to execution.
+        </p>
+
+        <div class="architecture">
+
+          <div class="arch">
+            <strong>Source</strong>
+            .engli
+          </div>
+
+          <div class="arch">
+            <strong>Loader</strong>
+            reads code
+          </div>
+
+          <div class="arch">
+            <strong>Lexer</strong>
+            tokens
+          </div>
+
+          <div class="arch">
+            <strong>Parser</strong>
+            AST
+          </div>
+
+          <div class="arch">
+            <strong>Semantic</strong>
+            validation
+          </div>
+
+          <div class="arch">
+            <strong>Interpreter</strong>
+            execution
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CLI -->
+    <section>
+      <div class="container">
+
+        <div class="section-label">Command line</div>
+
+        <h2 class="section-title">
+          One command to run it.
+        </h2>
+
+        <p class="section-description">
+          Install Engli, write a program, and run it directly.
+        </p>
+
+        <div class="terminal">
+          <div class="terminal-head">
+            terminal
+          </div>
+
+          <pre><code><span class="prompt">$</span> python3 -m venv .venv
+<span class="prompt">$</span> source .venv/bin/activate
+<span class="prompt">$</span> pip install -e .
+<span class="prompt">$</span> engli hello.engli
+
+<span class="output">Hello, World.</span>
+
+<span class="prompt">$</span> engli repl
+
+Engli REPL 1.0.0
+&gt; <span class="kw">Set</span> x <span class="kw">to</span> <span class="num">10</span>.
+&gt; <span class="kw">Add</span> <span class="num">5</span> <span class="kw">to</span> x.
+&gt; <span class="kw">Say</span> x.
+<span class="output">15</span></code></pre>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+
+        <h2>
+          Give English<br>
+          a compiler.
+        </h2>
+
+        <p>
+          Explore the source, read the documentation,
+          or start writing Engli programs.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="button primary"
+            href="https://github.com/live-by-unix/engli"
+            target="_blank"
+            rel="noopener"
+          >
+            Explore Engli on GitHub ↗
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+
+      <div>
+        Engli · An English-like programming language
+      </div>
+
+      <div class="footer-links">
+        <a
+          href="https://github.com/live-by-unix/engli"
+          target="_blank"
+          rel="noopener"
+        >GitHub</a>
+
+        <a
+          href="https://github.com/live-by-unix/engli/tree/main/docs"
+          target="_blank"
+          rel="noopener"
+        >Docs</a>
+
+        <a
+          href="https://github.com/live-by-unix/engli/blob/main/LICENSE"
+          target="_blank"
+          rel="noopener"
+        >MIT License</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
+
