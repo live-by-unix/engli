@@ -142,7 +142,7 @@ Engli follows a traditional interpreter architecture:
 
 ## Project Status
 
-**Version**: 0.1.0 (Alpha)
+**Version**: 1.0.0
 
 Engli is in active development. The core language features are implemented and tested.
 
@@ -151,6 +151,8 @@ Engli is in active development. The core language features are implemented and t
 ### Setup
 
 ```bash
+git clone https://github.com/live-by-unix/engli
+cd engli
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
