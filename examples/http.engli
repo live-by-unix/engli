@@ -1,0 +1,13 @@
+Send a GET request to "https://httpbin.org/get"
+and store the response in response.
+
+Say response.status.
+Say response.body.
+
+Send a POST request to "https://httpbin.org/post"
+with JSON containing:
+    "name" mapped to "AB",
+    "age" mapped to 20
+and store the response in response.
+
+Say response.status.

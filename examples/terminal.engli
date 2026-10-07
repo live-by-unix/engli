@@ -1,0 +1,10 @@
+Run the command "echo"
+with arguments "Hello from Engli"
+and store the result in result.
+
+Say result.output.
+
+Run the shell command "echo Hello from shell && pwd"
+and store the result in result.
+
+Say result.output.

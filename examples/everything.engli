@@ -1,0 +1,156 @@
+# Engli Everything Example
+# This program demonstrates many Engli language features
+
+# Variables and arithmetic
+Set name to "Engli Programmer".
+Set age to 25.
+Set score to 100.
+Set active to true.
+
+Say "Hello, {name}!".
+Say "Age: {age}".
+Say "Score: {score}".
+Say "Active: {active}".
+
+# Arithmetic operations
+Set result to (10 plus 5) multiplied by 2.
+Say "Result: {result}".
+
+# Conditionals
+If age is greater than or equal to 18:
+
+    Say "You are an adult.".
+
+Otherwise:
+
+    Say "You are a minor.".
+
+# Loops
+Set total to 0.
+
+For each number from 1 through 10:
+
+    Add number to total.
+
+End the loop.
+
+Say "Sum of 1-10: {total}".
+
+# Functions
+Define a function called greet that takes person:
+
+    Say "Hello, {person}!".
+
+End the function.
+
+greet with "World".
+
+# Recursion
+Define a function called factorial that takes n:
+
+    If n is less than or equal to 1:
+
+        Return 1.
+
+    Return n multiplied by factorial with n minus 1.
+
+End the function.
+
+Say "5! = {factorial with 5}".
+
+# Lists
+Set numbers to a list containing 1, 2, 3, 4, and 5.
+Say "Numbers: {numbers}".
+Say "First number: {numbers at index 0}".
+
+Add 6 to numbers.
+Say "After adding 6: {numbers}".
+
+# Maps
+Set person to a map containing:
+    "name" mapped to "AB",
+    "age" mapped to 25.
+
+Say "Person name: {person at \"name\"}".
+Say "Person age: {person at \"age\"}".
+
+# Objects
+Create an object called player.
+Set player.name to "Hero".
+Set player.health to 100.
+Say "Player: {player.name}, Health: {player.health}".
+
+# Custom types
+Define a type called Player:
+    A Player has a name which is text.
+    A Player has health which is a number.
+End the type.
+
+Set hero to a Player with:
+    name equal to "Hero",
+    health equal to 100.
+
+# Enums
+Define an enumeration called Direction containing:
+    North,
+    South,
+    East,
+    West.
+End the enumeration.
+
+Set direction to Direction.North.
+
+# Pattern matching
+Match direction:
+    When direction is Direction.North:
+        Say "Going North".
+    When direction is Direction.South:
+        Say "Going South".
+    Otherwise:
+        Say "Other direction".
+End the match.
+
+# Time
+Set now to the current date and time.
+Say "Current time: {now}".
+
+Set timestamp to the current Unix timestamp.
+Say "Unix timestamp: {timestamp}".
+
+# Random
+Set random_num to a random number between 1 and 100.
+Say "Random number: {random_num}".
+
+# Error handling
+Try:
+
+    Set x to 10 divided by 0.
+
+If an error occurs as error:
+
+    Say "Error caught: {error.message}".
+
+# File operations
+Write "Hello from Engli!" to the file "test_output.txt".
+
+Read the file "test_output.txt" into contents.
+Say "File contents: {contents}".
+
+If the file "test_output.txt" exists:
+
+    Say "File exists!".
+
+Delete the file "test_output.txt".
+
+# Environment variables
+Get the environment variable "HOME" and store it in home.
+Say "Home directory: {home}".
+
+# Terminal commands
+Run the command "echo"
+with arguments "Hello from terminal"
+and store the result in result.
+
+Say "Terminal output: {result.output}".
+
+Say "Engli program completed successfully!".

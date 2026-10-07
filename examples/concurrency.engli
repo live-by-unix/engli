@@ -1,0 +1,11 @@
+Create a channel called messages.
+
+Start a task:
+
+    Send "Hello from task"
+    through messages.
+
+Receive a message from messages
+and store it in message.
+
+Say message.

@@ -1,0 +1,7 @@
+Define a function called square that takes x:
+
+    Return x multiplied by x.
+
+End the function.
+
+Export square.

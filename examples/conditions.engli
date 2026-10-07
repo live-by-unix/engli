@@ -1,0 +1,23 @@
+Set age to 18.
+
+If age is greater than or equal to 18:
+
+    Say "You are an adult.".
+
+Otherwise:
+
+    Say "You are a minor.".
+
+Set score to 85.
+
+If score is greater than 90:
+
+    Say "Excellent!".
+
+Otherwise if score is greater than 70:
+
+    Say "Good job.".
+
+Otherwise:
+
+    Say "Keep trying.".

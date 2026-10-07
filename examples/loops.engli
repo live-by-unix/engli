@@ -1,0 +1,30 @@
+Set count to 0.
+Set total to 0.
+
+While count is less than 5:
+    Add 1 to total.
+    Add 1 to count.
+
+Say total.
+
+Set numbers to a list containing 1, 2, 3, 4, and 5.
+Set sum to 0.
+
+For each number in numbers:
+    Add number to sum.
+
+Say sum.
+
+Set sum to 0.
+
+For each i from 1 through 10:
+    Add i to sum.
+
+Say sum.
+
+Set counter to 0.
+
+Repeat 3 times:
+    Add 1 to counter.
+
+Say counter.

@@ -1,0 +1,17 @@
+Define a function called greet that takes name:
+
+    Say "Hello, {name}!".
+
+End the function.
+
+Set greeting to greet with "World".
+Set greeting to greet with "AB".
+
+Define a function called add that takes x and y:
+
+    Return x plus y.
+
+End the function.
+
+Set result to add with 10 and 20.
+Say result.

@@ -1,0 +1,9 @@
+Set person to a map containing:
+    "name" mapped to "AB",
+    "age" mapped to 20.
+
+Say person at "name".
+Say person at "age".
+
+Set person at "age" to 21.
+Say person at "age".

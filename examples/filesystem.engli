@@ -1,0 +1,20 @@
+Write "Hello from Engli." to the file "test.txt".
+
+Read the file "test.txt" into contents.
+
+Say contents.
+
+If the file "test.txt" exists:
+
+    Say "File exists.".
+
+Otherwise:
+
+    Say "File does not exist.".
+
+Create the directory "data".
+
+List the files in the directory "data" and store them in files.
+Say files.
+
+Delete the file "test.txt".

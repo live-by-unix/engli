@@ -1,0 +1,12 @@
+Create an object called player.
+
+Set player.name to "Hero".
+Set player.health to 100.
+Set player.score to 0.
+
+Say player.name.
+Say player.health.
+Say player.score.
+
+Subtract 10 from player.health.
+Say player.health.

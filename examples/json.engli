@@ -1,0 +1,9 @@
+Set json_text to "{\"name\": \"AB\", \"age\": 20}".
+
+Parse json_text as JSON and store it in data.
+
+Say data.
+
+Convert data to JSON and store it in json_output.
+
+Say json_output.

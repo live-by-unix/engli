@@ -1,0 +1,27 @@
+Define a function called factorial that takes n:
+
+    If n is less than or equal to 1:
+
+        Return 1.
+
+    Return n multiplied by factorial with n minus 1.
+
+End the function.
+
+Say factorial with 5.
+
+Define a function called fibonacci that takes n:
+
+    If n is less than or equal to 0:
+
+        Return 0.
+
+    If n is equal to 1:
+
+        Return 1.
+
+    Return fibonacci with n minus 1 plus fibonacci with n minus 2.
+
+End the function.
+
+Say fibonacci with 10.

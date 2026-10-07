@@ -1,0 +1,19 @@
+Set numbers to a list containing 1, 2, 3, 4, and 5.
+Say numbers at index 0.
+
+Set numbers at index 0 to 100.
+Say numbers at index 0.
+
+Add 6 to numbers.
+Say numbers.
+
+Remove 3 from numbers.
+Say numbers.
+
+Say the length of numbers.
+
+For each number in numbers:
+
+    Say number.
+
+End the loop.

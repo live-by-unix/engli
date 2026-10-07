@@ -1,0 +1,24 @@
+Set name to "AB".
+Set age to 20.
+Set active to true.
+Set score to 100.
+
+Say name.
+Say age.
+Say active.
+Say score.
+
+Set age to 21.
+Say age.
+
+Add 10 to score.
+Say score.
+
+Subtract 5 from score.
+Say score.
+
+Multiplied score by 2.
+Say score.
+
+Divided score by 3.
+Say score.
